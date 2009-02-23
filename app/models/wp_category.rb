@@ -9,7 +9,7 @@ class WpCategory < ActiveRecord::Base
   
   def self.move_to_radiant
     WpCategory.find(:all).each do |cat|
-      MetaTag.find_or_create_by_name(cat.cat_name)
+      MetaTag.find_or_create_by_name(cat.cat_name.strip.squeeze(' '))
     end
   end
 end

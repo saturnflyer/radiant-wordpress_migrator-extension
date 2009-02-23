@@ -9,7 +9,7 @@ class WpTag < ActiveRecord::Base
   
   def self.move_to_radiant
     WpTag.find(:all).each do |tag|
-      MetaTag.find_or_create_by_name(tag.tag)
+      MetaTag.find_or_create_by_name(tag.tag.strip.squeeze(' '))
     end
   end
 end
